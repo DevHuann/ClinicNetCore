@@ -1,0 +1,6 @@
+@ClinicNetCore_HostAddress = http://localhost:5143
+
+GET {{ClinicNetCore_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
