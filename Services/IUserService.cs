@@ -10,6 +10,6 @@ public interface IUserService
     // List<ListUserResponse> GetListUser();
     // bool DeleteUser(Guid userId);
     // Task<EditUserResponse> EditUser(EditUserRequest request);
-    // Task<GetUserById> GetUserById(Guid userId);
+    Task<GetUserById> GetUserById(Guid userId);
     // UserResponse ListUser(ListUserRequest request);
 }

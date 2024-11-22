@@ -12,8 +12,6 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
     
     public DbSet<Appointment> Appointments { get; set; }
     
-    public DbSet<BusinessHour> BusinessHours { get; set; }
-    
     public DbSet<Clinic> Clinics { get; set; }
     
     public DbSet<ClinicImage> ClinicImages { get; set; }
@@ -34,5 +32,14 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
+    }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Appointment>()
+            .HasOne(a => a.Review) // Một Appointment có một Rating
+            .WithOne(r => r.Appointment) // Một Rating thuộc về một Appointment
+            .HasForeignKey<Review>(r => r.AppointmentId); // AppointmentId là foreign key
     }
 }

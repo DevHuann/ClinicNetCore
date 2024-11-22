@@ -16,7 +16,7 @@ namespace ClinicNetCore.Controllers
         {
             _roleService = roleService;
         }
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         [HttpGet("get-role")]
         public IActionResult GetRole()
         {

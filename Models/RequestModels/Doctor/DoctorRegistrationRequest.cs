@@ -1,4 +1,7 @@
-﻿namespace ClinicNetCore.Models.RequestModels;
+﻿using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+
+namespace ClinicNetCore.Models.RequestModels;
 
 public class DoctorRegistrationRequest
 {
@@ -13,7 +16,9 @@ public class DoctorRegistrationRequest
     public string DoctorDescription { get; set; }
     public string DoctorSpokenLanguages { get; set; }
     public string DoctorGender { get; set; }
+    
     public DateTime DoctorDob { get; set; }
     public int ConsultFee { get; set; }
     public Guid ClinicId { get; set; }
+   
 }

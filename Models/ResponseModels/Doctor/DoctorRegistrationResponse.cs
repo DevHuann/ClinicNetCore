@@ -1,4 +1,4 @@
-﻿namespace ClinicNetCore.Models.ResponseModels;
+﻿namespace ClinicNetCore.Models.ResponseModels.Doctor;
 
 public class DoctorRegistrationResponse
 {

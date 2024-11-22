@@ -17,7 +17,7 @@ var configuration = builder.Configuration;
 // Khởi tạo CORS policy name
 const string _CORS = "_CORS";
 
-// Gọi các cấu hình dịch vụ của bạn ở đây
+// Các cấu hình dịch vụ
 ConfigureServices(builder.Services, configuration);
 
 var app = builder.Build();
@@ -50,7 +50,11 @@ void ConfigureServices(IServiceCollection services,IConfiguration Configuration)
             services.AddScoped<IClinicService, ClinicService>();
             services.AddScoped<IDoctorService,DoctorService>();
             services.AddScoped<IPatientService, PatientService>();
-            
+            services.AddScoped<ISpecialityService, SpecialityService>();
+            services.AddScoped<ITreatmentTypeService, TreatmentTypeService>();
+            services.AddScoped<IScheduleService, ScheduleService>();
+            services.AddScoped<IAppointmentService, AppointmentService>();
+            services.AddScoped<IReviewService, ReviewService>();
             // Cấu hình DB context
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -83,10 +87,10 @@ void ConfigureServices(IServiceCollection services,IConfiguration Configuration)
             services.Configure<IdentityOptions>(options =>
             {
                 // Thiết lập về Password
-                options.Password.RequireDigit = false; // Không bắt phải có số
-                options.Password.RequireLowercase = false; // Không bắt phải có chữ thường
-                options.Password.RequireNonAlphanumeric = true; //  bắt ký tự đặc biệt
-                options.Password.RequireUppercase = true; // bắt buộc chữ in
+                options.Password.RequireDigit = false; //số
+                options.Password.RequireLowercase = false; // chữ thường
+                options.Password.RequireNonAlphanumeric = false; // ký tự đặc biệt
+                options.Password.RequireUppercase = false; //chữ in
                 options.Password.RequiredLength = 4; // Số ký tự tối thiểu của password
                 options.Password.RequiredUniqueChars = 1; // Số ký tự riêng biệt
             });

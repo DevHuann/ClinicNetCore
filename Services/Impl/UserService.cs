@@ -78,8 +78,20 @@ public class UserService : IUserService
         
         var newUser = await _userManager.CreateAsync(user, request.Password);
         if (!newUser.Succeeded) return false;
-        await _userManager.AddToRolesAsync(user, ["Admin"]);
+        await _userManager.AddToRolesAsync(user, request.Roles);
         return true;
+    }
+    
+    public async Task<GetUserById> GetUserById(Guid userId)
+    {
+        var user = await _userManager.FindByIdAsync(userId.ToString());
+        return new GetUserById
+        {
+            Id = user.Id,
+            Email = user.Email,
+            PhoneNumber = user.PhoneNumber,
+            FullName = user.FullName
+        };
     }
     private async Task<JwtSecurityToken> GenerateTokenJwtByUser(ApplicationUser user)
     {

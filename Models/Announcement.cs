@@ -7,6 +7,5 @@ public class Announcement
     public string AnnContent { get; set; }
     public DateTime DateCreated { get; set; }
     public Guid ClinicId { get; set; }
-
-   
+    public Clinic Clinic { get; set; }
 }

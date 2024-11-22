@@ -23,8 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Models\RequestModels\Admin\" />
-      <Folder Include="Models\ResponseModels\Admin\" />
+      <Folder Include="Models\ResponseModels\Announcement\" />
     </ItemGroup>
 
 </Project>

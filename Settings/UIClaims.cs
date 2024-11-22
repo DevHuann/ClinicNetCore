@@ -1,34 +1,41 @@
-using System.Collections.Generic;
 using CKLS.Identity.Models;
 
 namespace ClinicNetCore.Settings
 {
     public class UIClaims
     {
-        public const string CourseRead = "Course.Read";
-        public const string CourseWrite = "Course.Write";
-        public const string CombinedCourseRead = "CombinedCourse.Read";
-        public const string CombinedCourseWrite = "CombinedCourse.Write";
         public const string Admin = "Admin";
         public const string Clinic = "Clinic";
         public const string Doctor = "Doctor";
         public const string Patient = "Patient";
-        public const string UserRead = "User.Read";
-        public const string UserWrite = "User.Write";
+        public const string ClinicRead = "Clinic.Read";
+        public const string ClinicWrite = "Clinic.Write";
+        public const string DoctorRead = "Doctor.Read";
+        public const string DoctorWrite = "Doctor.Write";
+        public const string PatientRead = "Patient.Read";
+        public const string PatientWrite = "Patient.Write";
+        
 
-
-        public static ClaimInfo CourseClaims = new ClaimInfo("Quản lý thông tin khoá học", "CourseManagementClaim",
+        public static ClaimInfo ClinicClaims = new ClaimInfo("Quản lý thông tin phòng khám",
+            "ClinicManagementClaim",
             new List<Permission>()
             {
-                new Permission("Đọc", CourseRead, 1),
-                new Permission("Ghi", CourseWrite, 2)
+                new Permission("Đọc", ClinicRead, 1),
+                new Permission("Ghi", ClinicWrite, 2)
             });
 
-        public static ClaimInfo CombinedCourseClaims = new ClaimInfo("Quản lý thông tin lột trình học",
-            "CombinedCourseManagementClaim", new List<Permission>()
+        public static ClaimInfo DoctorClaims = new ClaimInfo("Quản lý thông tin bác sĩ",
+            "DoctorManagementClaim", new List<Permission>()
             {
-                new Permission("Đọc", CombinedCourseRead, 1),
-                new Permission("Ghi", CombinedCourseWrite, 2)
+                new Permission("Đọc", DoctorRead, 1),
+                new Permission("Ghi", DoctorWrite, 2)
+            });
+        
+        public static ClaimInfo PatientClaims = new ClaimInfo("Quản lý thông tin bệnh nhân",
+            "PatientManagementClaim", new List<Permission>()
+            {
+                new Permission("Đọc", PatientRead, 1),
+                new Permission("Ghi", PatientWrite, 2)
             });
 
         public static ClaimInfo Per = new ClaimInfo("Quyền truy cập", "Per", new List<Permission>()
@@ -39,12 +46,6 @@ namespace ClinicNetCore.Settings
             new Permission("Patient", Patient, 4)
 
         });
-
-        public static ClaimInfo UserManagement = new ClaimInfo("Quản lí người dùng", "Usermanagement",
-            new List<Permission>()
-            {
-                new Permission("Đọc", UserRead, 1),
-                new Permission("Ghi", UserWrite, 2)
-            });
+        
     }
 }

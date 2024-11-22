@@ -1,4 +1,7 @@
-﻿namespace ClinicNetCore.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+
+namespace ClinicNetCore.Models;
 
 public class Doctor:ApplicationUser
 {
@@ -11,9 +14,11 @@ public class Doctor:ApplicationUser
     public DateTime DoctorDob { get; set; }
     public int ConsultFee { get; set; }
     public Guid ClinicId { get; set; }
+    public Clinic Clinic { get; set; }
     public List<Appointment> Appointments { get; set; }
     public List<Review> Reviews { get; set; }
     public List<Schedule> Schedules { get; set; }
     public List<TreatmentType> TreatmentTypes { get; set; }
+    public List<MedicalRecord>? MedicalRecords { get; set; }
     
 }

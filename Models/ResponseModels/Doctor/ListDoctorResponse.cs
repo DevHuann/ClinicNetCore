@@ -1,4 +1,7 @@
-﻿namespace ClinicNetCore.Models.ResponseModels;
+﻿using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+
+namespace ClinicNetCore.Models.ResponseModels.Doctor;
 
 public class ListDoctorResponse
 {
@@ -17,4 +20,6 @@ public class ListDoctorResponse
     public int ConsultFee { get; set; }
     public DateTime DateCreated { get; set; }
     public Guid ClinicId { get; set; }
+    
+    
 }

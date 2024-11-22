@@ -12,5 +12,6 @@ public class Patient:ApplicationUser
     
     public List<Appointment> Appointments { get; set; }
     public List<Review>Reviews { get; set; }
+    public List<MedicalRecord>? MedicalRecords { get; set; }
     
 }

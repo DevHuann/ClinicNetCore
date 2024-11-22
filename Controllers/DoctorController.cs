@@ -13,7 +13,7 @@ public class DoctorController:ControllerBase
     {
         _doctorService = doctorService;
     }
-    //Doctor
+    
     [HttpPost("DoctorRegistration")]
     public async Task<IActionResult> DoctorRegistration([FromBody] DoctorRegistrationRequest request)
     {
@@ -21,10 +21,43 @@ public class DoctorController:ControllerBase
         return Ok(response);
     }
     
-    [HttpGet("list-Doctor")]
+    [HttpGet("get-list-doctor")]
     public IActionResult ListDoctor()
     {
         var doctors = _doctorService.ListDoctor();
         return Ok(doctors);
     }
+    
+    [HttpPost("list-doctor")]
+    public IActionResult ListDoctor(ListUserRequest request)
+    {
+        var response = _doctorService.ListDoctor(request);
+        return Ok(response);
+    }
+
+    [HttpPut("edit-doctor")]
+    public IActionResult EditDoctor([FromBody] EditDoctorRequest request)
+    {
+        return Ok(_doctorService.EditDoctor(request));
+    }
+
+    [HttpGet("get-list-doctor-by-clinicId/{clinicId}")]
+    public IActionResult ListDoctorByClinicId(Guid clinicId)
+    {
+        return Ok(_doctorService.ListDoctorByClinicId(clinicId));
+    }
+
+    [HttpGet("get-doctor-by-id/{id}")]
+    public IActionResult GetDoctorById(Guid id)
+    {
+        return Ok(_doctorService.GetDoctorById(id));
+    }
+
+    [HttpDelete("delete-doctor/{id}")]
+    public IActionResult DeleteDoctor(Guid id)
+    {
+        return Ok(_doctorService.DeleteDoctor(id));
+    }
+    
+    
 }

@@ -57,10 +57,10 @@ namespace ClinicNetCore.Controllers
         //     return Ok(editUser);
         // }
         //
-        // [HttpGet("get-user/{id}")]
-        // public async Task<IActionResult> GetUser(Guid id)
-        // {
-        //     return Ok(await _userService.GetUserById(id));
-        // }
+        [HttpGet("get-user/{id}")]
+        public async Task<IActionResult> GetUser(Guid id)
+        {
+            return Ok(await _userService.GetUserById(id));
+        }
     }
 }

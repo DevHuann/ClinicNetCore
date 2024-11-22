@@ -1,5 +1,6 @@
 ﻿
 using ClinicNetCore.Models.RequestModels;
+using ClinicNetCore.Models.RequestModels.Clinic;
 using ClinicNetCore.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,10 +23,34 @@ public class ClinicController:ControllerBase
         return Ok(response);
     }
 
-    [HttpGet("list-Clinic")]
+    [HttpGet("get-list-clinic")]
     public IActionResult ListClinic()
     {
-        var clinics = _clinicService.ListClinic();
+        var clinics = _clinicService.GetListClinic();
         return Ok(clinics);
+    }
+    [HttpPost("list-clinic")]
+    public IActionResult ListClinic(ListUserRequest request)
+    {
+        var response = _clinicService.ListClinic(request);
+        return Ok(response);
+    }
+
+    [HttpPut("edit-clinic")]
+    public IActionResult EditClinic([FromBody] EditClinicRequest request)
+    {
+        return Ok(_clinicService.EditClinic(request));
+    }
+
+    [HttpDelete("delete-clinic/{id}")]
+    public IActionResult DeleteClinic(Guid id)
+    {
+        return Ok(_clinicService.DeleteClinic(id));
+    }
+
+    [HttpGet("get-clinic/{id}")]
+    public async Task<IActionResult> GetClinic(Guid id)
+    {
+        return Ok(await _clinicService.GetListDoctorByClinicId(id));
     }
 }

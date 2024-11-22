@@ -8,9 +8,9 @@ namespace ClinicNetCore.Settings
         public static List<ClaimInfo> claims = new List<ClaimInfo>()
         {
             UIClaims.Per,
-            UIClaims.CourseClaims, 
-            UIClaims.CombinedCourseClaims,
-            UIClaims.UserManagement,
+            UIClaims.ClinicClaims, 
+            UIClaims.DoctorClaims,
+            UIClaims.PatientClaims,
            
         };
         
